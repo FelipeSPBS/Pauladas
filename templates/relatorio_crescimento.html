@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Crescimento de Vendas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">📈 Crescimento Diário de Vendas (últimos {{ dias }} dias)</h2>
+
+    <canvas id="grafico" height="100"></canvas>
+
+    <script>
+        const ctx = document.getElementById('grafico').getContext('2d');
+        const grafico = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ labels | tojson }},
+                datasets: [{
+                    label: 'Vendas por dia',
+                    data: {{ valores | tojson }},
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    
+
+    <a href="/relatorios?dias=7" class="btn btn-outline-primary mt-3">Últimos 7 dias</a>
+    <a href="/relatorios?dias=30" class="btn btn-outline-secondary mt-3">Últimos 30 dias</a>
+    <a href="/relatorios" class="btn btn-secondary mt-3">⬅ Voltar</a>
+</div>
+</body>
+</html>

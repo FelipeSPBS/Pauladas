@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Conversão por Plano</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">💡 Percentual de Conversão por Plano</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Plano</th>
+                <th>Conversão (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plano, percentual in resultados %}
+                <tr>
+                    <td>{{ plano }}</td>
+                    <td>{{ "%.2f" | format(percentual) }}%</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/relatorios" class="btn btn-secondary mt-3">⬅ Voltar</a>
+</div>
+</body>
+</html>

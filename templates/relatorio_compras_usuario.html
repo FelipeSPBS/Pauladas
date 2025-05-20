@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Compras por Usuário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">🧍‍♂️ Compras por Usuário</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade de Compras</th>
+                <th>Total Gasto (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nome, qtd, total in resultados %}
+                <tr>
+                    <td>{{ nome }}</td>
+                    <td>{{ qtd }}</td>
+                    <td>R$ {{ "%.2f" | format(total) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/relatorios" class="btn btn-secondary mt-3">⬅ Voltar</a>
+</div>
+</body>
+</html>
